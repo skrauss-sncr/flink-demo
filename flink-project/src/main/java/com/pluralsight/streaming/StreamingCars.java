@@ -17,20 +17,13 @@
  */
 
 package com.pluralsight.streaming;
-
-import org.apache.flink.api.common.functions.FilterFunction;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.serialization.SimpleStringEncoder;
-import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.core.fs.Path;
 import org.apache.flink.streaming.api.datastream.DataStream;
-import org.apache.flink.streaming.api.datastream.DataStreamUtils;
 import org.apache.flink.streaming.api.datastream.KeyedStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.sink.filesystem.StreamingFileSink;
-
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Skeleton for a Flink DataStream Job.
@@ -110,7 +103,7 @@ public class StreamingCars {
 		});
 
 		carResults.addSink(sink);
-		keyedCarStream.print();
+		carResults.print();
 
 		env.execute("Streaming cars");
 	}
